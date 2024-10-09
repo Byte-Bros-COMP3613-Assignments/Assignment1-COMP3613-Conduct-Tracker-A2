@@ -1,7 +1,13 @@
-# COMP3613 Assignment 1
-* Student Name: Javonte Baldeo
-* Student ID: 816036030
-* Assignment: COMP3613 Assignment 1
+# Software Engineering II (COMP3613) Assignment 1
+### __Group Information:__
+* __Group Name:__ Byte Bros
+* __Group Members:__ Isaiah Rambhajan, Javonte Baldeo, Pranav Soondar, Teal Trim
+
+### __Project Information:__
+* __Course Name:__ Software Engineering II
+* __Course Code:__ COMP 3613
+* __Assignment:__ COMP3613 Assignment 2
+* __Date:__ 11/10/2024
 
 # Dependencies
 * Python3/pip3
@@ -44,3 +50,5 @@ flask student review <student_id> "<comment>" <is_positive>
 flask student reviews <student_id>
 ```
 
+# General Notes
+* This project was developed using GitHub Codespaces.
