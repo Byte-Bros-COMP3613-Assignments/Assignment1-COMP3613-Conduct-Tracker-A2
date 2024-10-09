@@ -12,7 +12,7 @@ from flask_migrate import Migrate
 from App.database import db
 
 
-
+#comment
 # This commands file allow you to create convenient CLI commands for testing controllers
 
 app = create_app()
