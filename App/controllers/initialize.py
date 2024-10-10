@@ -1,3 +1,4 @@
+from .user import create_user
 from .student import (add_student)
 from .review import (add_review)
 from App.database import db
@@ -9,6 +10,7 @@ def initialize():
     #Initial Values for testing purposes:
     #-------------------------------------------
     print ("Adding Testing Values to database.")
+    create_user('bob', 'bobpass')
     add_student("Isaiah_Rambhajan")
     add_student("Javonte_Baldeo")
     add_student("Pranav_Soondar")
