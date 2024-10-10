@@ -1,4 +1,4 @@
-from App.models import Student, Review
+from App.models import Student
 from App.database import db
 
 def add_student(name):
@@ -16,14 +16,18 @@ def get_student(student_id):
 def get_all_students():
     return Student.query.all()
 
-def add_review(student_id, comment, is_positive):
-    new_review = Review(student_id=student_id, comment=comment, is_positive=is_positive)
-    db.session.add(new_review)
-    db.session.commit()
-    return new_review
+def add_student_command_controller(name):
+    student = add_student(name)
+    print(f'Student {student.name} added!')
 
-def get_reviews_for_student(student_id):
-    student = get_student(student_id)
+def get_student_command_controller(name):
+    student = get_student_by_name(name)
     if student:
-        return student.reviews
-    return []
+        print(student.get_json())
+    else:
+        print(f'Student {name} not found.')
+
+def list_students_command_controller():
+    students = get_all_students()
+    for student in students:
+        print(student.get_json())
