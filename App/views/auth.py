@@ -11,8 +11,6 @@ from App.controllers import (
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 
-
-
 '''
 Page/Action Routes
 '''    
@@ -29,7 +27,7 @@ def identify_page():
 
 @auth_views.route('/login', methods=['POST'])
 def login_action():
-    data = request.form
+    data = request.json
     token = login(data['username'], data['password'])
     response = redirect(request.referrer)
     if not token:
