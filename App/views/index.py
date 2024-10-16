@@ -7,6 +7,12 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 def index_page():
     return render_template('index.html')
 
+@index_views.route('/test-post', methods=['POST'])
+def test_post():
+    data = request.get_json()
+    return jsonify({'message': 'Post received', 'data': data}), 200
+
+
 @index_views.route('/init', methods=['GET'])
 def init():
     initialize()
