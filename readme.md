@@ -7,7 +7,7 @@
 * __Course Name:__ Software Engineering II
 * __Course Code:__ COMP 3613
 * __Assignment:__ COMP3613 Assignment 2
-* __Date:__ 11/10/2024
+* __Date:__ 18/10/2024
 
 # Dependencies
 * Python3/pip3
