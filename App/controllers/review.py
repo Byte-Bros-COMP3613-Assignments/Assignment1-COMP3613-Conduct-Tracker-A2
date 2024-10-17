@@ -8,6 +8,26 @@ def add_review(student_id, comment, is_positive):
     db.session.commit()
     return new_review
 
+def update_review(review_id, student_id, comment, is_positive):
+    review = Review.query.get(review_id)
+    if review:
+        review.student_id = student_id
+        review.comment = comment
+        review.is_positive = is_positive
+        db.session.commit()
+        return review
+    return None  # Review not found
+
+
+def delete_review(review_id):
+    review = Review.query.get(review_id)
+    if review:
+        db.session.delete(review)
+        db.session.commit()
+        return True # Successfully deleted
+    return False #Failed to delete
+
+
 def get_reviews_for_student(student_id):
     student = get_student(student_id)
     if student:

@@ -4,6 +4,7 @@ from App.controllers import create_user, initialize, add_student
 
 from App.database import db
 from App.controllers.student import *
+from App.controllers.review import *
 from App.controllers.user import *
 from App.models import Student
 
@@ -35,7 +36,7 @@ def testing_create_review():
     data = request.json
     student_id = data.get('Student_id')
     comment = data.get('Comment')
-    is_positive =data.get('Is_positive')
+    is_positive = data.get('Is_positive')
     if add_review(student_id, comment, is_positive):
         return jsonify(message='Successfully added review')
     return jsonify(message='Failed to add review')
@@ -84,6 +85,22 @@ def testing_get_route():
 def testing_get_students():
     all_students = get_all_students()
     students_json = [student.get_json() for student in all_students]
-    return jsonify(students=students_json)    
+    return jsonify(students=students_json) 
 
+   
+@index_views.route('/test_update_review/<int:review_id>', methods=['PUT'])
+def testing_update_reviews(review_id):
+    data = request.json
+    student_id = data.get('Student_id')
+    comment = data.get('Comment')
+    is_positive = data.get('Is_positive')
+    if update_review(review_id, student_id, comment, is_positive):
+        return jsonify(message='Successfully Updated!') 
+    return jsonify(message='Failed to Update!')  
+
+@index_views.route('/test_delete_review/<int:review_id>', methods=['DELETE'])
+def testing_delete_review(review_id):
+    if delete_review(review_id):
+        return jsonify(message='Successfully Deleted!') 
+    return jsonify(message='Failed to Delete!')  
  
