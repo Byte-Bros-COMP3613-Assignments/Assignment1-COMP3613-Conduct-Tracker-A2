@@ -6,6 +6,7 @@ from App.database import db
 from App.controllers.student import *
 from App.controllers.review import *
 from App.controllers.user import *
+from App.controllers.auth import *
 from App.models import Student
 
 
