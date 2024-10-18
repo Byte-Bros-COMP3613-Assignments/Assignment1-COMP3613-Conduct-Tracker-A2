@@ -67,4 +67,4 @@ pytest -k "IntegrationTests"
 ```
 
 # General Notes
-* This project was developed using [GitHub Codespaces](https://github.com/features/codespaces "GitHub Codespaces' Homepage") and [Gipod](https://www.gitpod.io/ "Gitpod's Homepage")
+* This project was developed using [GitHub Codespaces](https://github.com/features/codespaces "GitHub Codespaces' Homepage") and [Gipod](https://www.gitpod.io/ "Gitpod's Homepage").
