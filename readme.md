@@ -50,5 +50,21 @@ flask student review <student_id> "<comment>" <is_positive>
 flask student reviews <student_id>
 ```
 
+# Testing Commands:
+* To Run Unit Tests and Integration Tests
+```bash
+pytest
+```
+
+* To Run Unit Tests
+```bash
+pytest -k "UnitTests"
+```
+
+* To Run Integration Tests
+```bash
+pytest -k "IntegrationTests"
+```
+
 # General Notes
-* This project was developed using GitHub Codespaces.
+* This project was developed using [GitHub Codespaces](https://github.com/features/codespaces "GitHub Codespaces' Homepage") and [Gipod](https://www.gitpod.io/ "Gitpod's Homepage")
