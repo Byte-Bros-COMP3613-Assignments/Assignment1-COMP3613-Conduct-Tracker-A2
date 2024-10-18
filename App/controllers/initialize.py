@@ -1,6 +1,6 @@
 from .user import create_user
-from .student import (add_student)
-from .review import (add_review)
+from .student import (add_student, get_student_by_name)
+from .review import (add_review, update_review, delete_review, get_reviews_for_student)
 from App.database import db
 
 def initialize():

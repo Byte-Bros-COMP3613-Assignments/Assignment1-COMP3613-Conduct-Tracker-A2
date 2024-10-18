@@ -10,7 +10,13 @@ from App.controllers import (
     login,
     get_user,
     get_user_by_username,
-    update_user
+    update_user,
+    add_student,
+    add_review,
+    update_review,
+    delete_review,
+    get_student_by_name,
+    get_reviews_for_student
 )
 
 
@@ -19,7 +25,7 @@ LOGGER = logging.getLogger(__name__)
 '''
    Unit Tests
 '''
-class UserUnitTests(unittest.TestCase):
+class UnitTests(unittest.TestCase):
 
     def test_new_user(self):
         newUser = User("bob", "bobpass")
@@ -79,22 +85,51 @@ def empty_db():
     db.drop_all()
 
 
-def test_authenticate():
-    user = create_user("bob", "bobpass")
-    assert login("bob", "bobpass") != None
-
-class UsersIntegrationTests(unittest.TestCase):
-
+class IntegrationTests(unittest.TestCase):
+    
     def test_create_user(self):
+        user = create_user("bob", "bobpass")
+        assert user.username == "bob"
+    
+    def test_authenticate(self):
         user = create_user("rick", "bobpass")
-        assert user.username == "rick"
+        assert login("rick", "bobpass") != None
 
     def test_get_all_users_json(self):
         users_json = get_all_users_json()
-        self.assertListEqual([{"id":1, "username":"bob"}, {"id":2, "username":"rick"}], users_json)
+        self.assertListEqual([{"id":1, "username":"rick"}, {"id":2, "username":"bob"}], users_json)
 
     # Tests data changes in the database
     def test_update_user(self):
         update_user(1, "ronnie")
         user = get_user(1)
         assert user.username == "ronnie"
+
+    def test_create_student(self):
+        student = add_student("John")
+        assert student.name == "John"
+
+    def test_create_review(self):
+        review = add_review(1, "John is an OK Student.", 1)
+        assert review.student_id == 1
+        assert review.comment == "John is an OK Student."
+        assert review.is_positive == 1
+
+    def test_update_review(self):
+        review = add_review(1, "John is a good Student.", 1)
+        review = update_review(1, 1, "John is a bad Student.", 0)
+        assert review.student_id == 1
+        assert review.comment == "John is a bad Student."
+        assert review.is_positive == 0
+
+    def test_delete_review(self):
+        deleted = delete_review(1)
+        assert deleted == True
+
+    def test_search_student(self):
+        student = add_student("Jane")
+        assert get_student_by_name("Jane") != None
+
+    def test_student_reviews(self):
+        reviews = get_reviews_for_student(1)
+        assert reviews != None
